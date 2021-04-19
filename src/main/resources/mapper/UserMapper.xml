@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis.mapperLocations=classpath*:mapper/**/*Mapper.xml因为配置文件里面配置了，
+    所以mapper文件必须有后缀Mapper.xml-->
+<!--namespace="com.yt.nearresourceservice.dao.UserDao"把mapper和dao层联系起来了。-->
+<mapper namespace="com.yt.nearresourceservice.dao.UserDao">
+    <select id="getLoginUser" resultType="com.yt.nearresourceservice.bean.User">
+        select * from users
+        where account=#{username} and password=#{password}
+    </select>
+</mapper>
