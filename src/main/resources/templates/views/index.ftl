@@ -319,11 +319,11 @@
                 <cite>页面</cite>
               </a>
               <dl class="layui-nav-child">
-                <dd><a lay-href="template/personalpage.html">个人主页</a></dd>
+                <dd><a lay-href="${request.contextPath}/toPersonalPage">个人主页</a></dd>
                 <dd><a lay-href="template/addresslist.html">通讯录</a></dd>
-                <dd><a lay-href="template/caller.html">客户列表</a></dd>
-                <dd><a lay-href="template/goodslist.html">商品列表</a></dd>
-                <dd><a lay-href="template/msgboard.html">留言板</a></dd>
+                <dd><a lay-href="${request.contextPath}/toCustomer">客户列表</a></dd>
+                <dd><a lay-href="${request.contextPath}/toGoods">商品列表</a></dd>
+                <dd><a lay-href="${request.contextPath}/toMessage">留言板</a></dd>
                 <dd><a lay-href="template/search.html">搜索结果</a></dd>
                 <dd><a href="user/reg.ftl" target="_blank">注册</a></dd>
                 <dd><a href="user/login.ftl" target="_blank">登入</a></dd>
@@ -345,20 +345,20 @@
                 <dd data-name="content">
                   <a href="javascript:;">内容系统</a>
                   <dl class="layui-nav-child">
-                    <dd data-name="list"><a lay-href="app/content/list.html">文章列表</a></dd>
-                    <dd data-name="tags"><a lay-href="app/content/tags.html">分类管理</a></dd>
-                    <dd data-name="comment"><a lay-href="app/content/comment.html">评论管理</a></dd>
+                    <dd data-name="list"><a lay-href="${request.contextPath}/toContentList">文章列表</a></dd>
+                    <dd data-name="tags"><a lay-href="${request.contextPath}/toTags">分类管理</a></dd>
+                    <dd data-name="comment"><a lay-href="${request.contextPath}/toComment">评论管理</a></dd>
                   </dl>
                 </dd>
                 <dd data-name="forum">
                   <a href="javascript:;">社区系统</a>
                   <dl class="layui-nav-child">
-                    <dd data-name="list"><a lay-href="app/forum/list.html">帖子列表</a></dd>
-                    <dd data-name="replys"><a lay-href="app/forum/replys.html">回帖列表</a></dd>
+                    <dd data-name="list"><a lay-href="${request.contextPath}/toCommunity">帖子列表</a></dd>
+                    <dd data-name="replys"><a lay-href="${request.contextPath}/toReplys">回帖列表</a></dd>
                   </dl>
                 </dd>
                 <dd>
-                  <a lay-href="app/message/index.html">消息中心</a>
+                  <a lay-href="${request.contextPath}/toMessageCenter">消息中心</a>
                 </dd>
                 <dd data-name="workorder">
                   <a lay-href="app/workorder/list.html">工单系统</a>

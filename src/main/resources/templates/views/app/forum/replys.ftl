@@ -4,12 +4,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>layuiAdmin 内容系统 - 评论管理</title>
+  <title>layuiAdmin 社区系统-回帖列表</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
-  <link rel="stylesheet" href="../../../layuiadmin/style/admin.css" media="all">
+  <link rel="stylesheet" href="${request.contextPath}/static/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="${request.contextPath}/static/layuiadmin/style/admin.css" media="all">
 </head>
 <body>
 
@@ -17,26 +17,20 @@
     <div class="layui-card">
       <div class="layui-form layui-card-header layuiadmin-card-header-auto">
         <div class="layui-form-item">
-          <div class="layui-inline">
-            <label class="layui-form-label">ID</label>
-            <div class="layui-input-inline">
-              <input type="text" name="cid" placeholder="请输入" autocomplete="off" class="layui-input">
+          <div class="layui-inline layuiadmin-input-useradmin">
+            <label class="layui-form-label">回帖人</label>
+            <div class="layui-input-block">
+              <input type="text" name="replyer" placeholder="请输入" autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-inline">
-            <label class="layui-form-label">评论者</label>
-            <div class="layui-input-inline">
-              <input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input">
-            </div>
-          </div>
-          <div class="layui-inline">
-            <label class="layui-form-label">评论内容</label>
-            <div class="layui-input-inline">
+            <label class="layui-form-label">回帖内容</label>
+            <div class="layui-input-block">
               <input type="text" name="content" placeholder="请输入" autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-inline">
-            <button class="layui-btn layuiadmin-btn-comm" data-type="reload" lay-submit lay-filter="LAY-app-contcomm-search">
+            <button class="layui-btn layuiadmin-btn-replys" data-type="reload" lay-submit lay-filter="LAY-app-forumreply-search">
               <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
             </button>
           </div>
@@ -44,10 +38,13 @@
       </div>
       <div class="layui-card-body">
         <div style="padding-bottom: 10px;">
-          <button class="layui-btn layuiadmin-btn-comm" data-type="batchdel">删除</button>
+          <button class="layui-btn layuiadmin-btn-replys" data-type="batchdel">删除</button>
         </div>
-        <table id="LAY-app-content-comm" lay-filter="LAY-app-content-comm"></table>  
-        <script type="text/html" id="table-content-com">
+        <table id="LAY-app-forumreply-list" lay-filter="LAY-app-forumreply-list"></table> 
+        <script type="text/html" id="imgTpl">
+          <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.avatar }}>
+        </script>  
+        <script type="text/html" id="table-forum-replys">
           <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
           <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
         </script>
@@ -55,32 +52,30 @@
     </div>
   </div>
 
-  <script src="../../../layuiadmin/layui/layui.js"></script>  
+  <script src="${request.contextPath}/static/layuiadmin/layui/layui.js"></script>  
   <script>
   layui.config({
-    base: '../../../layuiadmin/' //静态资源所在路径
+    base: '${request.contextPath}/static/layuiadmin/' //静态资源所在路径
   }).extend({
     index: 'lib/index' //主入口模块
-  }).use(['index', 'contlist', 'table'], function(){
+  }).use(['index', 'forum', 'table'], function(){
     var $ = layui.$
     ,form = layui.form
     ,table = layui.table;
     
-    
     //监听搜索
-    form.on('submit(LAY-app-contcomm-search)', function(data){
+    form.on('submit(LAY-app-forumreply-search)', function(data){
       var field = data.field;
       
       //执行重载
-      table.reload('LAY-app-content-comm', {
+      table.reload('LAY-app-forumreply-list', {
         where: field
       });
     });
     
-    //点击事件
     var active = {
       batchdel: function(){
-        var checkStatus = table.checkStatus('LAY-app-content-comm')
+        var checkStatus = table.checkStatus('LAY-app-forumreply-list')
         ,checkData = checkStatus.data; //得到选中的数据
 
         if(checkData.length === 0){
@@ -96,13 +91,13 @@
             //,……
           });
           */
-          table.reload('LAY-app-content-comm');
+          table.reload('LAY-app-forumreply-list');
           layer.msg('已删除');
         });
       }
-    }  
-
-    $('.layui-btn.layuiadmin-btn-comm').on('click', function(){
+    }
+    
+    $('.layui-btn.layuiadmin-btn-replys').on('click', function(){
       var type = $(this).data('type');
       active[type] ? active[type].call(this) : '';
     });
@@ -110,4 +105,3 @@
   </script>
 </body>
 </html>
-
