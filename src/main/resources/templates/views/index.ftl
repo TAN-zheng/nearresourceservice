@@ -135,8 +135,8 @@
                 <dd data-name="form">
                   <a href="javascript:;">表单</a>
                   <dl class="layui-nav-child">
-                    <dd><a lay-href="component/form/element.html">表单元素</a></dd>
-                    <dd><a lay-href="component/form/group.html">表单组合</a></dd>
+                    <dd><a lay-href="${request.contextPath}/toShowElement">表单元素</a></dd>
+                    <dd><a lay-href="${request.contextPath}/toShowGroup">表单组合</a></dd>
                   </dl>
                 </dd>
                 <dd data-name="nav">
@@ -391,13 +391,13 @@
               </a>
               <dl class="layui-nav-child">
                 <dd>
-                  <a lay-href="user/user/list.html">网站用户</a>
+                  <a lay-href="${request.contextPath}/toUserList">网站用户</a>
                 </dd>
                 <dd>
-                  <a lay-href="user/administrators/list.html">后台管理员</a>
+                  <a lay-href="${request.contextPath}/toAdminList">后台管理员</a>
                 </dd>
                 <dd>
-                  <a lay-href="user/administrators/role.html">角色管理</a>
+                  <a lay-href="${request.contextPath}/toRole">角色管理</a>
                 </dd>
               </dl>
             </li>
