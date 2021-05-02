@@ -323,7 +323,7 @@
                 <dd><a lay-href="template/addresslist.html">通讯录</a></dd>
                 <dd><a lay-href="${request.contextPath}/toCustomer">客户列表</a></dd>
                 <dd><a lay-href="${request.contextPath}/toGoods">商品列表</a></dd>
-                <dd><a lay-href="${request.contextPath}/toMessage">留言板</a></dd>
+                <dd><a lay-href="${request.contextPath}/toMessage">DS留言板</a></dd>
                 <dd><a lay-href="template/search.html">搜索结果</a></dd>
                 <dd><a href="user/reg.ftl" target="_blank">注册</a></dd>
                 <dd><a href="user/login.ftl" target="_blank">登入</a></dd>

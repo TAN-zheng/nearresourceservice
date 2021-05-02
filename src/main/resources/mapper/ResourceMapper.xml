@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yt.nearresourceservice.dao.ResourceDao">
+    <insert id="addResource" parameterType="com.yt.nearresourceservice.bean.Resource">
+        INSERT INTO nrs_sds_resouce(resourcename,description,sponsorid,number,type,price,pattern,state,imageurl,contact,time) VALUES(#{resourcename},#{description},#{sponsorid},#{number},#{type},#{price},#{pattern},#{state},#{imageurl},#{contact},#{time});
+    </insert>
+</mapper>

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Result {
-    private Long code;
+    private int code;
     private String msg;
     private Long count;
     private Object data;

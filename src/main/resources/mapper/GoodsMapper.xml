@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis.mapperLocations=classpath*:mapper/**/*Mapper.xml因为配置文件里面配置了，
+    所以mapper文件必须有后缀Mapper.xml-->
+<!--namespace="com.yt.nearresourceservice.dao.UserDao"把mapper和dao层联系起来了。-->
+<mapper namespace="com.yt.nearresourceservice.dao.GoodsDao">
+    <select id="getGoods" resultType="com.yt.nearresourceservice.bean.Resource">
+        SELECT * from nrs_sds_resouce
+        <where>
+            <if test="resourcename!=null and resourcename!=''">
+                and resourcename like CONCAT('%',#{resourcename},'%')
+            </if>
+            <if test="pattern!=null and pattern!=''">
+                and pattern like CONCAT('%',#{pattern},'%')
+            </if>
+            <if test="price!=null and price!=''">
+                and price like CONCAT('%',#{price},'%')
+            </if>
+            <if test="type!=null and type!=''">
+                and type like CONCAT('%',#{type},'%')
+            </if>
+        </where>
+        limit ${page},${limit}
+    </select>
+    <select id="getCount" resultType="java.lang.Long">
+        select count(*) from nrs_sds_resouce
+        <where>
+            <if test="resourcename!=null and resourcename!=''">
+                and resourcename like CONCAT('%',#{resourcename},'%')
+            </if>
+            <if test="pattern!=null and pattern!=''">
+                and pattern like CONCAT('%',#{pattern},'%')
+            </if>
+            <if test="price!=null and price!=''">
+                and price like CONCAT('%',#{price},'%')
+            </if>
+            <if test="type!=null and type!=''">
+                and type like CONCAT('%',#{type},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

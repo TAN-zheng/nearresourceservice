@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis.mapperLocations=classpath*:mapper/**/*Mapper.xml因为配置文件里面配置了，
+    所以mapper文件必须有后缀Mapper.xml-->
+<!--namespace="com.yt.nearresourceservice.dao.UserDao"把mapper和dao层联系起来了。-->
+<mapper namespace="com.yt.nearresourceservice.dao.MessageResourceDao">
+    <resultMap id="resourceMessage" type="com.yt.nearresourceservice.bean.Resource">
+        <id property="id" column="id"></id>
+        <result property="resourcename" column="resourcename"></result>
+        <result property="description" column="description"></result>
+        <result property="sponsorid" column="sponsorid"></result>
+        <result property="number" column="number"></result>
+        <result property="type" column="type"></result>
+        <result property="price" column="price"></result>
+        <result property="pattern" column="pattern"></result>
+        <result property="state" column="state"></result>
+        <result property="imageurl" column="imageurl"></result>
+        <result property="contact" column="contact"></result>
+        <result property="time" column="time"></result>
+        <collection property="messagesList"  ofType="com.yt.nearresourceservice.bean.Message">
+            <id property="id" column="m_id"></id>
+            <result property="userid" column="userid"></result>
+            <result property="usercomment" column="usercomment"></result>
+            <result property="replierid" column="replierid"></result>
+            <result property="resourceid" column="resourceid"></result>
+        </collection>
+    </resultMap>
+    <select id="getMessage" resultMap="resourceMessage">
+        select r.* ,m.* from nrs_sds_resouce r ,message m
+        where m.resourceid=r.id AND r.id=#{id}
+    </select>
+    <select id="getMessages" resultType="com.yt.nearresourceservice.bean.Message">
+        select * from message where resourceid=#{id}
+    </select>
+</mapper>
