@@ -6,4 +6,13 @@
     <insert id="addResource" parameterType="com.yt.nearresourceservice.bean.Resource">
         INSERT INTO nrs_sds_resouce(resourcename,description,sponsorid,number,type,price,pattern,state,imageurl,contact,time) VALUES(#{resourcename},#{description},#{sponsorid},#{number},#{type},#{price},#{pattern},#{state},#{imageurl},#{contact},#{time});
     </insert>
+    <select id="getPersonalOrders" resultType="com.yt.nearresourceservice.bean.Resource">
+        select * from nrs_sds_resouce n
+        where n.id=#{id}
+    </select>
+    <update id="updatePersonalOrders" parameterType="com.yt.nearresourceservice.bean.Resource">
+        update nrs_sds_resouce set
+        resourcename=#{resourcename},price=#{price},number=#{number},description=#{description},type=#{type},pattern=#{pattern},state=#{state},contact=#{contact},time=#{time}
+        where id=#{id}
+    </update>
 </mapper>

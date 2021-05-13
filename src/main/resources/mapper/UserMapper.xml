@@ -10,4 +10,8 @@
         select * from users
         where account=#{username} and password=#{password}
     </select>
+    <insert id="toAddUser" parameterType="com.yt.nearresourceservice.bean.User">
+        insert into users(name,sex,age,phone,account,password,address,identitycard)
+VALUES(#{name},#{sex},#{age},#{phone},#{account},#{password},#{address},#{identitycard})
+    </insert>
 </mapper>

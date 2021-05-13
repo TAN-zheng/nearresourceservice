@@ -11,4 +11,8 @@ public interface UserDao {
 * 这个接口方法是为了，查询登录用户。
 * */
     public User getLoginUser(@Param("username") String username,@Param("password") String password);
+    /*
+    * 向数据库用户表添加一个用户
+    * */
+    public int toAddUser(User user);
 }

@@ -16,4 +16,12 @@ public class UserService {
 public User getLoginUser(String username,String password){
     return userDao.getLoginUser(username,password);
 }
+/**
+ * 这个方法是注册用户页面，注册用户来的信息。
+ * 实现的操作：是想数据库里面添加一个用户的记录。
+ * */
+public int toAddUser(User user){
+userDao.toAddUser(user);
+    return 1;
+}
 }

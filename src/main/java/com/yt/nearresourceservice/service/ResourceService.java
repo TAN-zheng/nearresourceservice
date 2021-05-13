@@ -19,5 +19,19 @@ public class ResourceService {
     public void addResource(Resource resource){
         resourceDao.addResource(resource);
     }
+    /*
+    * 前端修改按钮的回显的单个查询
+    *
+    * */
+    public Resource getPersonalOrders(Long id){
+        return resourceDao.getPersonalOrders(id);
+    }
+    /*
+    * 单个个人资源的信息修改
+    * */
+    public Boolean updatePersonalOrders(Resource resource){
+
+        return resourceDao.updatePersonalOrders(resource);
+    }
 
 }
